@@ -594,12 +594,8 @@ export default {
             let defaultValue = isFunction(formItem.default)
               ? formItem.default(formData)
               : formItem.default
-            // 默认值不为空  & (值为空 || 老值和当前值)
-            if (
-              !isEmpty(defaultValue) &&
-              (isEmpty(this.formData[field]) ||
-                formItem._defaultValue === this.formData[field])
-            ) {
+            // 默认值不为空  & 
+            if (!isEmpty(defaultValue) && typeof(this.formData[field]) === "undefined") {
               // 判断是否有格式化函数
               if (this.computedFormDesc[field].displayFormatter) {
                 defaultValue = this.desc.displayFormatter(
